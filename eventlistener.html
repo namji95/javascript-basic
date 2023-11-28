@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>eventlistener</title>
+  <link rel="stylesheet" href="main.css">
+ </head>
+ <body>
+
+    <div class="alert-box" id="alert">
+        <p id="name">알림창 입니다.</p>
+        <button id="close">닫기</button>
+    </div>
+        <button id="alertOpen">아이디 버튼</button>
+        <button id="alertClose">비밀번호 버튼</button>
+
+    <script>
+
+        document.getElementById('close').addEventListener('click', function() {
+            document.getElementById('alert').style.display = 'none';
+        });
+        document.getElementById('alertOpen').addEventListener('click', function() {
+            document.getElementById('alert').style.display = 'block';
+            document.getElementById('name').innerHTML = '아이디를 입력하세요';
+        });
+        document.getElementById('alertClose').addEventListener('click', function() {
+            document.getElementById('alert').style.display = 'block';
+            document.getElementById('name').innerHTML = '비밀번호를 입력하세요';
+        });
+        
+        /* 
+            여기서 function()을 콜백함수라고 부르고,
+            자바스크립트에서는 순차적으로 실행하고 싶을 때 자주 사용
+        */
+     
+    </script>
+
+ </body>
+</html>
