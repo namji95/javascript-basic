@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>quiz2</title>
+  <link href="quiz.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+ </head>
+ <body>
+    <div class="box">
+        <p>숫자입력 : 
+            <input type="text" id="num">
+            <button type="submit" id="send">전송</button>
+        </p>
+    </div>
+    <script>
+
+        $('#send').on('click', function() {
+            if ($('#num').val() % 9 == 0) {
+                console.log("박수X2");
+            } else if ($('#num').val() % 3 == 0) {
+                console.log("박수");
+            } else {
+                console.log("통과");
+            }
+        });
+
+    </script>
+ </body>
+</html>
