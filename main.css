@@ -1,3 +1,11 @@
+:root {
+  scroll-behavior: auto; 
+}
+
+/* root는 bootstrap을 사용할 시 
+css를 원상복구하여 
+내가원하는 css를 사용할 수 있게 할 때 사용 */
+
 .alert-box {
     background-color: skyblue;
     padding: 20px;
@@ -10,21 +18,22 @@
   display: none;
 }
 
-.show {
-  display: block;
-}
-
 .black-bg {
   width : 100%;
   height : 100%;
   position : fixed;
   background : rgba(0,0,0,0.5);
-  z-index : 5;
+  z-index : 6;
   padding: 30px;
   visibility: hidden;
   opacity: 0;
   transition: all 1s;
 }
+
+.show {
+  display: block;
+}
+
 .white-bg {
   background: white;
   border-radius: 5px;
@@ -42,11 +51,86 @@
 }
 
 .main-bg {
-  padding: 100px 20px;
+  padding: 50px 20px;
   background: lightgrey;
 }
 
 .dark {
   background-color: black;
   color: white;
+}
+
+.slide-container {
+  width: 300vw;
+  transition: all 1s;
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}
+
+.navbar {
+  /* position: fixed; */
+  width: 100%;
+  z-index: 5;
+  transition: all 0.5s;
+}
+
+.navbar-brand {
+  font-size: 25px;
+  /* transition: all 0.5s; */
+}
+
+.lorem {
+  width: 200px;
+  height: 100px;
+  overflow-y: scroll;
+}
+
+/* ----------------for--------------- */
+ul.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.list::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.tab-button {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  float: left;
+  margin-right: -1px;
+  margin-bottom: -1px;
+  color: grey;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.orange {
+  border-top: 2px solid orange;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  border-left: 1px solid #ccc;
+  color: black;
+  margin-top: -2px;
+}
+
+.tab-content {
+  display: none;
+  padding: 10px;
+}
+
+.show {
+  display: block;
 }

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>quiz8</title>
+ </head>
+ <body>
+    <!-- 퀴즈 설명 
+    방금 마신 커피의 3분의 2만큼 총 2번 리필해주는 카페가 있습니다.
+    예를 들면 90ml 주문하면 6ml를 해주며, 그 다음은 40ml를 리필해주는 카페입니다.
+    그럼 처음 주문한 커피 양에 따라서 최대한 마실 수 있는 커피를 콘솔창에 출력하는 문제입니다.
+    이 문제 응용하기
+    커피리필을 무제한으로 해준다면 처음 담아주는 커피가 360ml일 때,
+    총 몇 ml의 커피를 마실 수 있을까 -->
+    <script>
+        var first = 360;
+        var r = 2/3;
+        first = first/(1-r);
+        console.log(first);
+    </script>
+ </body>
+</html>
