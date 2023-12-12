@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>quiz9</title>
+ </head>
+ <body>
+
+    <!-- 출석부 안에 이름이 있으면 있어요 출력하기 -->
+    <!-- 응용 : 같은 이름이 두명 있으면 한 번만 출력되게 하기 -->
+
+    <script>
+        var 출석부 = ['흥민', '영희', '철수', '재석'];
+
+        function 이름찾기(name){
+            for (var i = 0; i < 출석부.length; i++) {
+                if (name == 출석부[i]) {
+                    console.log('있어요');
+                }
+            }
+        }
+
+        이름찾기('지훈');
+
+    </script>
+ </body>
+</html>

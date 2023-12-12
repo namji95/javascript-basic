@@ -1,0 +1,231 @@
+<!document html>
+<html lang="en">
+
+    <head>
+
+        <!--Required meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Bootstrap CSS-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <title>localStorage</title>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row">
+            
+                <!-- <div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5>Card title</h5>
+                    <p>가격 : 70000</p>
+                </div> -->
+            
+            </div>
+        </div>
+
+        <div class="container my-3">
+            <button class="btn btn-danger" id="name">이름역순</button>
+        </div>
+
+        <div class="container my-3">
+            <button class="btn btn-danger" id="underprice">6만 이하</button>
+        </div>
+
+        <div class="container my-3">
+            <button class="btn btn-danger" id="price">가격순정렬</button>
+        </div>
+
+        <div class="container">
+            <button class="btn btn-danger" id="more">더보기</button>
+        </div>
+
+        <script>
+
+            var count = 0;
+
+            $('#more').click(function() {
+                if (count == 0) {
+                    $.get('https://codingapple1.github.io/js/more1.json').done(function(data) {
+                        console.log(data);
+                        data.forEach((a, i) => {
+                        var sl = 
+                            `<div class="col-sm-4">
+                                <img src="https://via.placeholder.com/600" class="w-100">
+                                <h5>${data[i].title}</h5>
+                                <p>가격 : ${data[i].price}</p>
+                            </div>`;
+                            $('.row').append(sl);
+                        });
+                        count++;
+                    }).fail(function(error) {
+                        console.log(error);
+                    });
+                } else if (count == 1) {
+                    $.get('https://codingapple1.github.io/js/more2.json').done(function(data) {
+                        console.log(data);
+                        data.forEach((a, i) => {
+                        var sl = 
+                            `<div class="col-sm-4">
+                                <img src="https://via.placeholder.com/600" class="w-100">
+                                <h5>${data[i].title}</h5>
+                                <p>가격 : ${data[i].price}</p>
+                            </div>`;
+                            $('.row').append(sl);
+                        });
+                        count++;
+                    }).fail(function(error) {
+                        console.log(error);
+                    });
+                } else if (count == 2) {
+                    $('#more').prop('disabled', true);
+                }
+            });
+
+        </script>
+          
+        <script>
+            
+            var products = [
+              { id : 0, price : 70000, title : 'Blossom Dress' },
+              { id : 1, price : 50000, title : 'Springfield Shirt' },
+              { id : 2, price : 60000, title : 'Black Monastery' }
+            ];
+
+            $('#price').click(function() {
+                products.sort(function(a,b) {
+                    return a.price - b.price;
+                });
+
+                $('.row').html('');
+
+                products.forEach((a, i) => {
+                var sl = 
+                    `<div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${products[i].title}</h5>
+                        <p>가격 : ${products[i].price}</p>
+                    </div>`;
+                $('.row').append(sl);
+            });
+
+            });
+
+            $('#name').click(() => {
+                products.sort((a, b) => {    
+                    if (a.title < b.title) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                });
+
+                $('.row').html('');
+
+                products.forEach((a, i) => {
+                var sl = 
+                    `<div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${products[i].title}</h5>
+                        <p>가격 : ${products[i].price}</p>
+                    </div>`;
+                $('.row').append(sl);
+            });
+            });
+
+            $('#underprice').click(() => {
+                var up = products.filter((a) => {
+                    return a.price <= 60000;
+                });
+                
+                $('.row').html('');
+
+                products.forEach((a, i) => {
+                    var sl = 
+                    `<div class="col-sm-4">
+                        <img src="https://via.placeholder.com/600" class="w-100">
+                        <h5>${up[i].title}</h5>
+                        <p>가격 : ${up[i].price}</p>
+                    </div>`;
+                    $('.row').append(sl);
+                });
+            });
+
+            var array = [7,3,5,2,40];
+            array.sort(function(a, b) {
+                return a - b;
+            });
+            console.log(array);
+
+            var array1 = [7,3,5,2,40];
+            var array2 = array1.filter(function(a) {
+                return a < 4;
+            });
+            console.log(array2);
+
+            var array3 = [7,3,5,2,40];
+            var array4 = array3.map(function(a) {
+                return a * 4;
+            });
+            console.log(array4);
+
+            for (let i = 0; i < products.length; i++) {
+                $('.card-body h5').eq(i).html(products[i].title);
+                $('.card-body p').eq(i).html('가격 : ' + products[i].price);
+            }
+
+            // 데이터를 반 영구적으로 저장하는 방법 브라우저 안에 몰래 데이터 저장 가능
+            // 개발자도구 Application에서 확인 가능
+            // Local Storage = Key : Value 형태로 되어 있음 (이름 : 값)
+            // - 용량은 5MB 문자/숫자만 저장 가능 (이외의 자료는 강제로 문자로 바뀜)
+            // - 브라우저 종료 후 다시 켜도 정보가 저장되어 있음 비휘발성
+            // Session Storage = Key : Value 형태로 되어 있음 (이름 : 값)
+            // - 용량은 5MB 문자/숫자만 저장 가능 (이외의 자료는 강제로 문자로 바뀜)
+            // - 브라우저 종료 시 정보 삭제 휘발성
+            // IndexedDB = 구조화된 대용량 데이터 저장시
+            // Cookies = 보통 로그인 정보 저장
+            // Cache Storage = HTML, css, js 파일 저장시
+
+            products.forEach((a, i) => {
+            var sl = 
+                `<div class="col-sm-4">
+                    <img src="https://via.placeholder.com/600" class="w-100">
+                    <h5>${products[i].title}</h5>
+                    <p>가격 : ${products[i].price}</p>
+                    <button class="buy">구매</button>
+                </div>`;
+                $('.row').append(sl);
+            });
+
+            // localstorage 사용법
+            localStorage.setItem('이름', 'nam'); // 저장
+            localStorage.getItem('이름'); // 저장된 자료 가져오기
+            localStorage.removeItem('이름'); // 저장된 자료 삭제하기
+            localStorage.setItem('num', [1,2,3]); // array를 강제로 문자로 바꿈
+            var array = [1,2,3];
+            var newArr = JSON.stringify(array); // JSON 형태로 변환
+            localStorage.setItem('num1', newArr); // array를 깨지지 않고 원본을 유지해서 저장하는 방법;
+            var arr = localStorage.getItem('num1');
+            console.log(arr); // array가 아닌 문자이기 때문에 index로 꺼낼 수 없음
+            arr1 = JSON.parse(arr); // JSON으로 바뀐 array를 다시 array로 돌리는 방법
+            console.log(arr1[1]);
+            localStorage.removeItem('num');
+            localStorage.removeItem('num1');
+            // localStorage에 저장된 데이터의 값을 수정하고 싶을 때는 따로 코드가 없기 때문에
+            // JSON형태를 원래의 형태로 바꾼 후
+            // 데이터 수정 후
+            // 다시 JSON 형태로 변환
+
+            // Session Storage
+            sessionStorage.setItem('age', '20'); // localStorage와 사용법 같음
+            sessionStorage.removeItem('age');
+            
+        </script>
+    </body>
+</html>

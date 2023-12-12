@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>quiz11</title>
+ </head>
+ <body>
+
+    <!--모의고사 성적들을 array 자료에 전부 담아 첫 파라미터로 입력하고
+        이번 11월 모의고사 성적을 둘 째 파라미터로 입력하면
+        11월 성적이 기존 성적들의 평균에 비해 얼마나 우수한지 결과를 알려주고 싶다.
+        어떻게 함수를 만들면 될까?-->
+
+    <script>
+
+        function 함수(arr, b) {
+            var result = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                result = result + arr[i];
+            }
+            if (result/arr.length < b) {
+                console.log('올랐네요');
+            } else {
+                console.log('같거나 떨어졌네요');
+            }
+        }
+
+        함수 ([2,3,4], 1);
+
+    </script>
+ </body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset = utf-8">
+  <title>ajax</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="main.css" rel="stylesheet">
+
+ </head>
+ <body>
+
+    <!--서버란 간단하게 설명하면 데이터를 주고 받을 수 있게 하는 프로그램
+        1. 어떤 데이터를 요청할지
+        2. 어떤 방법으로 요청할지
+        -----------------------
+        1. 데이터 url
+        2. Get인지 Post인지
+        $.post('url') || $.get('url') 이렇게 작성
+        $.get('url').done(function(){}).fail(function(){})
+        제이쿼리.겟요청('url입력').요청성공시(함수대로실행(){}().실패할시(함수대로실행(){})
+        $.post('url', {key : value}).done(function(){}).fail(function(){})
+        제이쿼리.포스트요청('url입력', 보내고 싶은 값).요청성공시(함수대로실행(){}).실패시(함수대로실행(){})-->
+
+    <script>
+
+        $.get('https://codingapple1.github.io/hello.txt').done(function(data) {
+            console.log(data);
+        }).fail(function() {
+            console.log('실패함');
+        });
+
+    </script>
+ </body>
+</html>
